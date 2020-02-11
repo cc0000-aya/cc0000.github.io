@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cc0000-aya.github.io/cc0000.github.io/</id>
     <title>cc0000&apos;s blog</title>
-    <updated>2020-02-11T05:34:34.903Z</updated>
+    <updated>2020-02-11T06:54:41.028Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cc0000-aya.github.io/cc0000.github.io/"/>
     <link rel="self" href="https://cc0000-aya.github.io/cc0000.github.io//atom.xml"/>
@@ -11,56 +11,21 @@
     <icon>https://cc0000-aya.github.io/cc0000.github.io//favicon.ico</icon>
     <rights>All rights reserved 2020, cc0000&apos;s blog</rights>
     <entry>
+        <title type="html"><![CDATA[题解[洛谷P1140]相似基因]]></title>
+        <id>https://cc0000-aya.github.io/cc0000.github.io//post/ti-jie-luo-gu-p1140xiang-si-ji-yin</id>
+        <link href="https://cc0000-aya.github.io/cc0000.github.io//post/ti-jie-luo-gu-p1140xiang-si-ji-yin">
+        </link>
+        <updated>2020-02-11T06:20:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>一道一般的动态规划</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>一道一般的动态规划</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Markdown 测试]]></title>
         <id>https://cc0000-aya.github.io/cc0000.github.io//post/markdown-ce-shi</id>
         <link href="https://cc0000-aya.github.io/cc0000.github.io//post/markdown-ce-shi">
         </link>
         <updated>2020-02-10T10:12:30.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="1标题">1.标题</h1>
-<h1 id="这是h1">这是H1</h1>
-<h2 id="这是h2">这是H2</h2>
-<h3 id="这是h3">这是H3</h3>
-<p><strong>不要全文使用标题，或者用标题强调特别多的文字。这会让读者觉得困扰。</strong></p>
-<h1 id="2强调">2.强调</h1>
-<p><em>星号斜体</em><br>
-<strong>双星号加粗</strong><br>
-<em>单下划线斜体</em><br>
-<s>删除线</s></p>
-<h1 id="3代码">3.代码</h1>
-<pre><code>#include &lt;cstdio&gt;
-int main()
-{
-	printf(&quot;hello world!&quot;);
-}
-</code></pre>
-<h1 id="4区块引用">4.区块引用</h1>
-<blockquote>
-<p>Markdown 标记区块引用的方法是在行的最前面加&gt;</p>
-<blockquote>
-<p>或者是这样</p>
-</blockquote>
-</blockquote>
-<h1 id="5列表">5.列表</h1>
-<p>Markdown 支持有序列表和无序列表，无序列表使用星号、加号或是减号作为列表标记，有序列表则使用数字接着一个英文句点。两种列表方式格式都是：列表标记+空格+列表项，即列表项目标记通常是放在最左边，也可以缩进最多 3 个空格，项目标记后面则一定要接着至少一个空格或制表符。</p>
-<h1 id="1无序列表">（1）无序列表</h1>
-<ul>
-<li>Red</li>
-<li>Green</li>
-<li>Blue</li>
-</ul>
-<h1 id="2有序列表">（2）有序列表</h1>
-<ol>
-<li>Red</li>
-<li>Green</li>
-<li>Blue</li>
-</ol>
-<h1 id="6链接">6.链接</h1>
-<p>在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可<br>
-<a href="https://cc0000-aya.github.io/cc0000.github.io/">像这个样子</a></p>
-<h1 id="7图片">7.图片</h1>
-<p><img src="/%E5%9B%BE%E7%89%87%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%E6%88%96%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/" alt="图片下方文字"><br>
-例如：<br>
-<img src="https://cdn.class.luogu.com.cn/fe/logo-full.png?27925f707b34b1472e135b1a2dd848e5" alt="logo"></p>
-]]></content>
     </entry>
 </feed>

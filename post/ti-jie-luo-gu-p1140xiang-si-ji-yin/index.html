@@ -1,0 +1,259 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>题解[洛谷P1140]相似基因 | cc0000&#39;s blog</title>
+<meta name="description" content="I AK IOI!" />
+<link rel="shortcut icon" href="https://cc0000-aya.github.io/cc0000.github.io//favicon.ico?v=1581403433859">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://cc0000-aya.github.io/cc0000.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://cc0000-aya.github.io/cc0000.github.io/">
+  <img class="avatar" src="https://cc0000-aya.github.io/cc0000.github.io//images/avatar.png?v=1581403433859" alt="">
+  </a>
+  <h1 class="site-title">
+    cc0000&#39;s blog
+  </h1>
+  <p class="site-description">
+    I AK IOI!
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              题解[洛谷P1140]相似基因
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-02-11
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>一道一般的动态规划</p>
+<!-- more -->
+<p><a href="https://www.luogu.com.cn/problem/P1140">传送门</a></p>
+<h3 id="定义式">定义式</h3>
+<p>定义一个数组<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>d</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">d_{i,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>表示第一个基因组前i个基因和第二个基因组前j个基因的最大相似度。</p>
+<h3 id="转移式">转移式</h3>
+<p>每一对基因都只有三种可能</p>
+<ul>
+<li>非空碱基与非空碱基</li>
+<li>空碱基与非空碱基</li>
+<li>非空碱基与空碱基<br>
+这样，转移式就很清楚啦</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="1.44em"><mstyle mathcolor="black"><mrow><msub><mi>f</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo></mrow><mstyle mathcolor="black"><mrow><msub><mi>f</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>d</mi><mrow><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>b</mi><mi>j</mi></msub></mrow></msub></mrow><mo separator="true">,</mo><mstyle mathcolor="black"><mrow><msub><mi>f</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi></mrow></msub><mo>+</mo><msub><mi>d</mi><mrow><msub><mi>a</mi><mi>i</mi></msub><mo separator="true">,</mo><mn>5</mn></mrow></msub></mrow><mo separator="true">,</mo><mstyle mathcolor="black"><mrow><msub><mi>f</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>d</mi><mrow><msub><mi>b</mi><mi>j</mi></msub><mo separator="true">,</mo><mn>5</mn></mrow></msub></mrow><mstyle mathcolor="black"><mo>)</mo></mstyle></mstyle></mstyle></mstyle></mstyle></mstyle></mrow><annotation encoding="application/x-tex">\Large{\color{black}{f_{i,j}=max(}\color{black}{f_{i-1,j-1}+d_{a_{i},b_{j}}},\color{black}{f_{i-1,j}+d_{a_{i},5}},\color{black}{f_{i,j-1}+d_{b_{j},5}}\color{black}{)}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.582108em;vertical-align:-0.502108em;"></span><span class="mord sizing reset-size6 size8"><span class="mord" style="color:black;"><span class="mord" style="color:black;"><span class="mord mathdefault" style="margin-right:0.10764em;color:black;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30799999999999994em;"><span style="top:-2.85em;margin-left:-0.10764em;margin-right:0.034722222222222224em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size8 size6 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">i</span><span class="mpunct mtight" style="color:black;">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;color:black;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.28502777777777777em;"><span></span></span></span></span></span></span><span class="mspace" style="color:black;margin-right:0.2777777777777778em;"></span><span class="mrel" style="color:black;">=</span><span class="mspace" style="color:black;margin-right:0.2777777777777778em;"></span><span class="mord mathdefault" style="color:black;">m</span><span class="mord mathdefault" style="color:black;">a</span><span class="mord mathdefault" style="color:black;">x</span><span class="mopen" style="color:black;">(</span></span><span class="mord" style="color:black;"><span class="mord" style="color:black;"><span class="mord mathdefault" style="margin-right:0.10764em;color:black;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30799999999999994em;"><span style="top:-2.85em;margin-left:-0.10764em;margin-right:0.034722222222222224em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size8 size6 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">i</span><span class="mbin mtight" style="color:black;">−</span><span class="mord mtight" style="color:black;">1</span><span class="mpunct mtight" style="color:black;">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;color:black;">j</span><span class="mbin mtight" style="color:black;">−</span><span class="mord mtight" style="color:black;">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.28502777777777777em;"><span></span></span></span></span></span></span><span class="mspace" style="color:black;margin-right:0.2222222222222222em;"></span><span class="mbin" style="color:black;">+</span><span class="mspace" style="color:black;margin-right:0.2222222222222222em;"></span><span class="mord" style="color:black;"><span class="mord mathdefault" style="color:black;">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33225em;"><span style="top:-2.8499999999999996em;margin-left:0em;margin-right:0.034722222222222224em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size8 size6 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct mtight" style="color:black;">,</span><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="margin-right:0.05724em;color:black;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3486861111111111em;"><span></span></span></span></span></span></span></span><span class="mpunct" style="color:black;">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord" style="color:black;"><span class="mord" style="color:black;"><span class="mord mathdefault" style="margin-right:0.10764em;color:black;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30799999999999994em;"><span style="top:-2.85em;margin-left:-0.10764em;margin-right:0.034722222222222224em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size8 size6 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">i</span><span class="mbin mtight" style="color:black;">−</span><span class="mord mtight" style="color:black;">1</span><span class="mpunct mtight" style="color:black;">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;color:black;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.28502777777777777em;"><span></span></span></span></span></span></span><span class="mspace" style="color:black;margin-right:0.2222222222222222em;"></span><span class="mbin" style="color:black;">+</span><span class="mspace" style="color:black;margin-right:0.2222222222222222em;"></span><span class="mord" style="color:black;"><span class="mord mathdefault" style="color:black;">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2975277777777777em;"><span style="top:-2.85em;margin-left:0em;margin-right:0.034722222222222224em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size8 size6 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct mtight" style="color:black;">,</span><span class="mord mtight" style="color:black;">5</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.28502777777777777em;"><span></span></span></span></span></span></span></span><span class="mpunct" style="color:black;">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord" style="color:black;"><span class="mord" style="color:black;"><span class="mord mathdefault" style="margin-right:0.10764em;color:black;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30799999999999994em;"><span style="top:-2.85em;margin-left:-0.10764em;margin-right:0.034722222222222224em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size8 size6 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">i</span><span class="mpunct mtight" style="color:black;">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;color:black;">j</span><span class="mbin mtight" style="color:black;">−</span><span class="mord mtight" style="color:black;">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.28502777777777777em;"><span></span></span></span></span></span></span><span class="mspace" style="color:black;margin-right:0.2222222222222222em;"></span><span class="mbin" style="color:black;">+</span><span class="mspace" style="color:black;margin-right:0.2222222222222222em;"></span><span class="mord" style="color:black;"><span class="mord mathdefault" style="color:black;">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33225em;"><span style="top:-2.8499999999999996em;margin-left:0em;margin-right:0.034722222222222224em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size8 size6 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="color:black;">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight" style="color:black;"><span class="mord mtight" style="color:black;"><span class="mord mathdefault mtight" style="margin-right:0.05724em;color:black;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mpunct mtight" style="color:black;">,</span><span class="mord mtight" style="color:black;">5</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3486861111111111em;"><span></span></span></span></span></span></span></span><span class="mord" style="color:black;"><span class="mclose" style="color:black;">)</span></span></span></span></span></span></span></p>
+<h3 id="容易忽视的小细节">容易忽视的小细节</h3>
+<p>因为相似度可能是负数，所以要初始化一下</p>
+<h3 id="上代码">上代码</h3>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+int la,lb;
+char a1[103];
+char b1[103];
+int a[103],b[103];
+int dp[103][103];
+int lena,lenb;
+int v[7][7]={
+	{0,0,0,0,0,0},
+	{0,5,-1,-2,-1,-3},
+	{0,-1,5,-3,-2,-4},
+	{0,-2,-3,5,-2,-2},
+	{0,-1,-2,-2,5,-1},
+	{0,-3,-4,-2,-1,0},
+};
+int main()
+{
+	scanf(&quot;%d%s&quot;,&amp;la,a1);
+	scanf(&quot;%d%s&quot;,&amp;lb,b1);
+	for(int i=0;i&lt;la;i++)
+	{
+		if(a1[i]=='A')
+			a[i+1]=1;
+		if(a1[i]=='C')
+			a[i+1]=2;
+		if(a1[i]=='G')
+			a[i+1]=3;
+		if(a1[i]=='T')
+			a[i+1]=4;
+	}
+	for(int i=0;i&lt;lb;i++)
+	{
+		if(b1[i]=='A')
+			b[i+1]=1;
+		if(b1[i]=='C')
+			b[i+1]=2;
+		if(b1[i]=='G')
+			b[i+1]=3;
+		if(b1[i]=='T')
+			b[i+1]=4;
+	}
+	for(int i=1;i&lt;=102;i++)
+	{
+		for(int j=1;j&lt;=102;j++)
+		{
+			dp[i][j]=-1e6;
+		}
+	}
+	for(int i=1;i&lt;=la;i++)
+		dp[i][0]=dp[i-1][0]+v[a[i]][5];
+	for(int i=1;i&lt;=lb;i++)
+		dp[0][i]=dp[0][i-1]+v[5][b[i]];
+	for(int i=1;i&lt;=la;i++)
+	{
+		for(int j=1;j&lt;=lb;j++)
+		{
+			dp[i][j]=max(dp[i][j],dp[i-1][j]+v[a[i]][5]);
+			dp[i][j]=max(dp[i][j],dp[i][j-1]+v[5][b[j]]);
+			dp[i][j]=max(dp[i][j],dp[i-1][j-1]+v[a[i]][b[j]]);
+		}
+	}
+	printf(&quot;%d&quot;,dp[la][lb]);
+}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89%E5%BC%8F">定义式</a></li>
+<li><a href="#%E8%BD%AC%E7%A7%BB%E5%BC%8F">转移式</a></li>
+<li><a href="#%E5%AE%B9%E6%98%93%E5%BF%BD%E8%A7%86%E7%9A%84%E5%B0%8F%E7%BB%86%E8%8A%82">容易忽视的小细节</a></li>
+<li><a href="#%E4%B8%8A%E4%BB%A3%E7%A0%81">上代码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://cc0000-aya.github.io/cc0000.github.io//post/markdown-ce-shi">
+              <h3 class="post-title">
+                Markdown 测试
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://cc0000-aya.github.io/cc0000.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
